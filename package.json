@@ -26,7 +26,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +55,12 @@
     "@graphql-codegen/typescript-operations": "^1.17.14",
     "@graphql-codegen/typescript-react-apollo": "2.2.1",
     "@graphql-codegen/typescript-urql": "^2.0.3",
+    "@storybook/addon-actions": "^6.1.19",
+    "@storybook/addon-essentials": "^6.1.19",
+    "@storybook/addon-links": "^6.1.19",
+    "@storybook/node-logger": "^6.1.19",
+    "@storybook/preset-create-react-app": "^3.1.6",
+    "@storybook/react": "^6.1.19",
     "@types/react-router-dom": "^5.1.7"
   }
 }

@@ -1,0 +1,6 @@
+.basic-container{
+ word-break: break-all; 
+ display: flex;
+ justify-content: start;
+ align-items: center;  
+}

@@ -1,20 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useQuery } from "urql";
+import React from "react";
+
 import { useGetAuthUserQuery } from "../../generated/graphql";
 
-interface errorBody {
-  field: string;
-  message: string;
-}
-
-const tempQuery = `
-query getAuth{
-  getAuthUser{
-    id
-    username
-  }
-}
-`;
 
 const Login: React.FC = ({}) => {
   const [{ data }] = useGetAuthUserQuery();
