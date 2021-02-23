@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory, withRouter } from "react-router-dom";
 import CustomButton from "../Buttons";
 import JumboContainer from "../Jumbotron";
 
@@ -6,26 +7,49 @@ interface Props {
   height?: string;
   width?: string;
   theme: string;
-  bg: string;
-  color: string;
-  btnType:string
+  bg?: string;
+  color?: string;
+  btnType?: string;
 }
+
+export interface RouteComponentProps {
+    height?: string;
+    width?: string;
+    theme: string;
+    bg?: string;
+    color?: string;
+    btnType?: string;
+  }
 
 const Navbar: React.FC<Props> = ({
   height = "50px",
   width = "100%",
-  bg,
-  color,
-  btnType
+  bg = "grey",
+  color = "#fff",
+  btnType = "primary",
 }) => {
+  const history = useHistory();
 
-    
+  const handleNavBtnClick= (path:string) => {
+    history.push(path);
+  };
+
   return (
     <JumboContainer height={height} width={width} bg={bg} color={color}>
-      <CustomButton label="Login" handeOnClick={() => undefined} type={btnType} margin="auto 10px"/>
-      <CustomButton label="Signup" handeOnClick={() => undefined} type={btnType} margin="auto 10px"/>
+      <CustomButton
+        label="Login"
+        handeOnClick={() => handleNavBtnClick("login")}
+        type={btnType}
+        margin="auto 10px"
+      />
+      <CustomButton
+        label="Signup"
+        handeOnClick={() => handleNavBtnClick("signup")}
+        type={btnType}
+        margin="auto 10px"
+      />
     </JumboContainer>
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar as any) as any;
