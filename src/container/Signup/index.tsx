@@ -1,10 +1,11 @@
 import React, { SetStateAction, useState } from "react";
 import Form from "../../component/Form";
 
-import { useGetAuthUserQuery } from "../../generated/graphql";
+import { useSignUpMutation } from "../../generated/graphql";
 
 const SignUp: React.FC = ({}) => {
-  const [{ data }] = useGetAuthUserQuery();
+  const [_,signupUser] = useSignUpMutation()
+
   const [username,setUsername] = useState()
   const [password,setPassword] = useState()
 
@@ -30,7 +31,7 @@ const SignUp: React.FC = ({}) => {
         height="90vh"
         btnText="SignUp"
         inputFields={inputFields}
-        onSubmitBtnClick={()=>console.log("handle SignUp btn click")}
+        onSubmitBtnClick={()=>signupUser()}
       />
   );
 };
