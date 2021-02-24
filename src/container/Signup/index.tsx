@@ -1,15 +1,38 @@
-import React from "react";
+import React, { SetStateAction, useState } from "react";
+import Form from "../../component/Form";
 
 import { useGetAuthUserQuery } from "../../generated/graphql";
 
-const Signup: React.FC = ({}) => {
+const SignUp: React.FC = ({}) => {
   const [{ data }] = useGetAuthUserQuery();
+  const [username,setUsername] = useState()
+  const [password,setPassword] = useState()
+
+
+  const inputFields = [
+    {
+      label:"Username",
+      type:"text",
+      value:username,
+      key:"signup-username-input",
+      handleOnChange:(value:SetStateAction<undefined>)=>setUsername(value)
+    },{
+      label:"Password",
+      type:"password",
+      value:password,
+      key:"signup-password-input",
+      handleOnChange:(value:SetStateAction<undefined>)=>setPassword(value)
+    }
+  ]
   return (
-    <div>
-      SignUP
-      <h4>{JSON.stringify(data)}</h4>
-    </div>
+      <Form
+        heading="Welcome"
+        height="90vh"
+        btnText="SignUp"
+        inputFields={inputFields}
+        onSubmitBtnClick={()=>console.log("handle SignUp btn click")}
+      />
   );
 };
 
-export default Signup;
+export default SignUp;

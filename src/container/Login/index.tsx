@@ -14,11 +14,13 @@ const Login: React.FC = ({}) => {
       label:"Username",
       type:"text",
       value:username,
+      key:"login-username-input",
       handleOnChange:(value:SetStateAction<undefined>)=>setUsername(value)
     },{
       label:"Password",
       type:"password",
       value:password,
+      key:"login-password-input",
       handleOnChange:(value:SetStateAction<undefined>)=>setPassword(value)
     }
   ]

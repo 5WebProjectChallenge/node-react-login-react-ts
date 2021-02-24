@@ -1,5 +1,5 @@
 import React from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 import CustomButton from "../Buttons";
 import Input from "../Input";
@@ -10,6 +10,7 @@ interface InputFields {
   label: string;
   type: string;
   value: string | undefined;
+  key: string;
   handleOnChange: any;
 }
 
@@ -18,14 +19,20 @@ interface Props {
   inputFields: InputFields[];
   height: string;
   heading: string;
-  onSubmitBtnClick : any
+  onSubmitBtnClick: any;
 }
 
-const Form: React.FC<Props> = ({ btnText, onSubmitBtnClick,inputFields, height, heading }) => {
+const Form: React.FC<Props> = ({
+  btnText,
+  onSubmitBtnClick,
+  inputFields,
+  height,
+  heading,
+}) => {
   return (
     <JumboContainer height={height} bg="tranparent" flexDirection="column">
       <h1>{heading}</h1>
-      {inputFields && inputFields.map((field) => <Input key={uuidv4()} {...field} />)}
+      {inputFields && inputFields.map((field) => <Input {...field} />)}
       <CustomButton
         type="primary"
         padding="12px 30px"
