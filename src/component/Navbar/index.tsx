@@ -10,6 +10,7 @@ interface Props {
   bg?: string;
   color?: string;
   btnType?: string;
+  justifyContent?:string
 }
 
 export interface RouteComponentProps {
@@ -19,6 +20,7 @@ export interface RouteComponentProps {
     bg?: string;
     color?: string;
     btnType?: string;
+
   }
 
 const Navbar: React.FC<Props> = ({
@@ -27,6 +29,7 @@ const Navbar: React.FC<Props> = ({
   bg = "grey",
   color = "#fff",
   btnType = "primary",
+  justifyContent = "flex-end"
 }) => {
   const history = useHistory();
 
@@ -35,7 +38,7 @@ const Navbar: React.FC<Props> = ({
   };
 
   return (
-    <JumboContainer height={height} width={width} bg={bg} color={color}>
+    <JumboContainer justifyContent={justifyContent} height={height} width={width} bg={bg} color={color}>
       <CustomButton
         label="Login"
         handeOnClick={() => handleNavBtnClick("login")}

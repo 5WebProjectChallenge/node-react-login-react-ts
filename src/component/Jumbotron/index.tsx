@@ -9,9 +9,11 @@ interface Props {
   fs?: string;
   padding?: string;
   margin?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   width?: string;
   height?: string;
+  flexDirection?: any;
+  justifyContent?: string;
 }
 
 const JumboContainer: React.FC<Props> = ({
@@ -22,11 +24,15 @@ const JumboContainer: React.FC<Props> = ({
   margin,
   padding,
   height,
-  width
+  width,
+  flexDirection="row",
+  justifyContent="center"
 }) => {
   let backgroundColor = "#ccc";
   if (bg === "green") {
     backgroundColor = "#256774";
+  }else if(bg === "tranparent"){
+    backgroundColor="tranparent"
   }
 
   return (
@@ -39,11 +45,12 @@ const JumboContainer: React.FC<Props> = ({
         margin,
         padding,
         height,
-        width
+        width,
+        flexDirection,
+        justifyContent
       }}
     > 
       {children}
-      {/* <CustomButton /> */}
     </div>
   );
 };

@@ -1,0 +1,48 @@
+.input-container {
+    position: relative;
+    margin: 15px;
+    /* min-height: 70px; */
+    /* display: inline; */
+    /* padding: 20px; */
+}
+
+.input-container label {
+    position: absolute;
+    width: 100%;
+    /* height: ; */
+    text-align: left;
+    bottom: 15px;
+    left: 10px;
+    font-size: 20px;
+    z-index: -1;
+}
+
+.input-container input:focus +label{
+    bottom: 60px;
+    font-size: 16px;
+    transition: all 0.2s;
+    
+}
+
+.input-container input {
+    padding: 0 5px;
+    height: 50px;
+    width: 250px;
+    font-size: 22px;
+    border: 1px solid #999;
+    border-radius: 20px;
+    background-color: transparent;
+}
+
+.input-container input:focus {
+    border:2px solid teal;
+    outline: none;
+
+}
+
+.input-was-active label{
+    bottom: 60px !important;
+    font-size: 16px;
+    transition: all 0.2s;
+    
+}
