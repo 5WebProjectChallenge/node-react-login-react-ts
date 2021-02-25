@@ -20,7 +20,9 @@ interface Props {
   height: string;
   heading: string;
   onSubmitBtnClick: any;
-  isLoading:boolean
+  isLoading: boolean;
+  errorMsg: string;
+  isError: boolean;
 }
 
 const Form: React.FC<Props> = ({
@@ -29,11 +31,15 @@ const Form: React.FC<Props> = ({
   inputFields,
   height,
   heading,
-  isLoading
+  isLoading,
+  errorMsg,
+  isError,
 }) => {
   return (
     <JumboContainer height={height} bg="transparent" flexDirection="column">
       <h1>{heading}</h1>
+      {isError && <span style={{ color: "red" ,margin:'10px 0'}}>{errorMsg} </span>}
+
       {inputFields && inputFields.map((field) => <Input {...field} />)}
       <CustomButton
         type="primary"

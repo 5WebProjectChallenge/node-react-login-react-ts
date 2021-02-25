@@ -11,6 +11,8 @@ const Login: React.FC = ({}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setisLoading] = useState(false);
+  const [errorMsg, seterrorMsg] = useState("");
+  const [isError, setisError] = useState(false);
 
   const inputFields = [
     {
@@ -34,11 +36,20 @@ const Login: React.FC = ({}) => {
   const handleLoginUser = async () => {
     setisLoading(true);
     try {
-      await loginUser({ username, password });
+      const { data } = await loginUser({ username, password });
       setisLoading(false);
-      history.push("/");
+      if (data?.login.user?.id) {
+        setisError(false);
+        history.push("/");
+      } else {
+        setisError(true);
+        seterrorMsg("Invalid data");
+      }
     } catch (e) {
       setisLoading(false);
+
+      setisError(true);
+      seterrorMsg("Invalid data");
       console.log("HANDLE EXCEPTION HERE");
     }
   };
@@ -48,6 +59,8 @@ const Login: React.FC = ({}) => {
       heading="Welcome back"
       height="90vh"
       btnText="login"
+      isError={isError}
+      errorMsg={errorMsg}
       isLoading={isLoading}
       inputFields={inputFields}
       onSubmitBtnClick={() => handleLoginUser()}

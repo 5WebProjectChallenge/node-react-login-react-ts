@@ -10,6 +10,8 @@ const SignUp: React.FC = ({}) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isError, setisError] = useState(false);
+  const [errorMsg, seterrorMsg] = useState("");
   const [isLoading, setisLoading] = useState(false);
 
   const inputFields = [
@@ -34,13 +36,21 @@ const SignUp: React.FC = ({}) => {
   const handleSignupUser = async () => {
     setisLoading(true);
     try {
-      await signupUser({ username, password });
+      const { data } = await signupUser({ username, password });
       setisLoading(false);
+      if (data?.signUp?.user?.username) {
+        setisError(false);
 
-      history.push("/");
+        history.push("/");
+      } else {
+        setisError(true);
+        seterrorMsg("Invalid data");
+      }
     } catch (e) {
       setisLoading(false);
 
+      setisError(true);
+      seterrorMsg("Invalid data");
       console.log("HANDLE EXCEPTION HERE");
     }
   };
@@ -49,6 +59,8 @@ const SignUp: React.FC = ({}) => {
     <Form
       heading="Welcome"
       height="90vh"
+      isError={isError}
+      errorMsg={errorMsg}
       btnText="SignUp"
       isLoading={isLoading}
       inputFields={inputFields}
