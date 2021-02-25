@@ -5,6 +5,7 @@ import { createClient, fetchExchange, Provider } from "urql";
 import Navbar from "./component/Navbar";
 import Home from "./container/Home";
 import Signup from "./container/Signup";
+import withAuth from "./Utility/withAuth";
 
 const client = createClient({
   url: "http://localhost:4000/graphql",
@@ -22,17 +23,9 @@ export default function App() {
       <Router>
       <Navbar theme="light" />
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-
-          <Route path="/login">
-            <Login />
-          </Route>
-
-          <Route path="/signup">
-            <Signup />
-          </Route>
+          <Route exact path="/" component={withAuth(Home)} />
+          <Route exact path="/login" component={withAuth(Login)} />
+          <Route exact path="/signup" component={withAuth(Signup)} />
         </Switch>
       </Router>
     </Provider>

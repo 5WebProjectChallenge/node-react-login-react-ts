@@ -31,8 +31,8 @@ const JumboContainer: React.FC<Props> = ({
   let backgroundColor = "#ccc";
   if (bg === "green") {
     backgroundColor = "#256774";
-  }else if(bg === "tranparent"){
-    backgroundColor="tranparent"
+  }else if(bg === "transparent"){
+    backgroundColor="transparent"
   }
 
   return (

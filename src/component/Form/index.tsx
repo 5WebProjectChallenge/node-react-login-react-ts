@@ -30,7 +30,7 @@ const Form: React.FC<Props> = ({
   heading,
 }) => {
   return (
-    <JumboContainer height={height} bg="tranparent" flexDirection="column">
+    <JumboContainer height={height} bg="transparent" flexDirection="column">
       <h1>{heading}</h1>
       {inputFields && inputFields.map((field) => <Input {...field} />)}
       <CustomButton

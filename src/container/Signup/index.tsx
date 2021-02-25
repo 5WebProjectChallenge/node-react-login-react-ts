@@ -6,8 +6,8 @@ import { useSignUpMutation } from "../../generated/graphql";
 const SignUp: React.FC = ({}) => {
   const [_,signupUser] = useSignUpMutation()
 
-  const [username,setUsername] = useState()
-  const [password,setPassword] = useState()
+  const [username,setUsername] = useState('')
+  const [password,setPassword] = useState('')
 
 
   const inputFields = [
@@ -16,13 +16,13 @@ const SignUp: React.FC = ({}) => {
       type:"text",
       value:username,
       key:"signup-username-input",
-      handleOnChange:(value:SetStateAction<undefined>)=>setUsername(value)
+      handleOnChange:(value:SetStateAction<undefined>)=>setUsername(value + '')
     },{
       label:"Password",
       type:"password",
       value:password,
       key:"signup-password-input",
-      handleOnChange:(value:SetStateAction<undefined>)=>setPassword(value)
+      handleOnChange:(value:SetStateAction<undefined>)=>setPassword(value + '')
     }
   ]
   return (
@@ -31,7 +31,7 @@ const SignUp: React.FC = ({}) => {
         height="90vh"
         btnText="SignUp"
         inputFields={inputFields}
-        onSubmitBtnClick={()=>signupUser()}
+        onSubmitBtnClick={()=>signupUser({username,password})}
       />
   );
 };
