@@ -1,10 +1,11 @@
 import React from "react";
+import { LoadingSmallLight } from "../Loading";
 
 import "./styles.css";
 
 interface Props {
   label: string;
-  type:string;
+  type: string;
   bg?: string;
   color?: string;
   fs?: string;
@@ -12,6 +13,7 @@ interface Props {
   margin?: string;
   disable?: boolean;
   handeOnClick: () => void;
+  isLoading: boolean;
 }
 
 const CustomButton: React.FC<Props> = ({
@@ -21,31 +23,32 @@ const CustomButton: React.FC<Props> = ({
   padding,
   margin,
   type,
+  isLoading,
   disable = false,
 }) => {
-    let backgroundColor = "#ccc"
-    let btnColor = "#000"
+  let backgroundColor = "#ccc";
+  let btnColor = "#000";
 
-    if(type === "primary"){
-        backgroundColor = "#256774"
-        btnColor = "#fff"
-    }
+  if (type === "primary") {
+    backgroundColor = "#256774";
+    btnColor = "#fff";
+  }
 
-  
-    return (
+  return (
     <button
       disabled={disable}
       className="basic-button"
       onClick={handeOnClick}
       style={{
         backgroundColor,
-        color:btnColor,
-        fontSize:fs,
+        color: btnColor,
+        fontSize: fs,
         margin,
-        padding
+        padding,
       }}
     >
-      {label}
+      {isLoading && <LoadingSmallLight />}
+      {!isLoading && label}
     </button>
   );
 };

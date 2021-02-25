@@ -65,6 +65,7 @@ const Navbar: React.FC<Props> = ({
     >
       {isUserAuth && (
         <CustomButton
+          isLoading={false}
           label="Logout"
           handeOnClick={() => handleNavBtnClick("logout")}
           type={btnType}
@@ -75,12 +76,14 @@ const Navbar: React.FC<Props> = ({
         <>
           <CustomButton
             label="Login"
+            isLoading={false}
             handeOnClick={() => handleNavBtnClick("login")}
             type={btnType}
             margin="auto 10px"
           />
           <CustomButton
             label="Signup"
+            isLoading={false}
             handeOnClick={() => handleNavBtnClick("signup")}
             type={btnType}
             margin="auto 10px"

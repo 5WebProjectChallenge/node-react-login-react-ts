@@ -10,6 +10,7 @@ const SignUp: React.FC = ({}) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setisLoading] = useState(false);
 
   const inputFields = [
     {
@@ -31,10 +32,15 @@ const SignUp: React.FC = ({}) => {
   ];
 
   const handleSignupUser = async () => {
+    setisLoading(true);
     try {
       await signupUser({ username, password });
+      setisLoading(false);
+
       history.push("/");
     } catch (e) {
+      setisLoading(false);
+
       console.log("HANDLE EXCEPTION HERE");
     }
   };
@@ -44,6 +50,7 @@ const SignUp: React.FC = ({}) => {
       heading="Welcome"
       height="90vh"
       btnText="SignUp"
+      isLoading={isLoading}
       inputFields={inputFields}
       onSubmitBtnClick={() => handleSignupUser()}
     />

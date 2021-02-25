@@ -14,6 +14,23 @@
     border-color: #256774 transparent #256774 transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }
+  .light::after{
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;  
+  }
+  .small{
+    width: 12px;
+    height: 12px;
+    margin: 1px;
+   
+  }
+  .small::after{
+    width: 12px;
+    height: 12px;
+    margin: 1px;
+
+  }
+
   @keyframes lds-dual-ring {
     0% {
       transform: rotate(0deg);

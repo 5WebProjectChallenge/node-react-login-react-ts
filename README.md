@@ -14,5 +14,5 @@
 - [x] Api response action
 - [x] Logout
 - [ ] Error show
-- [ ] Loading show
+- [x] Loading show
 - [ ] Dummy Protected route

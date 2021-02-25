@@ -20,6 +20,7 @@ interface Props {
   height: string;
   heading: string;
   onSubmitBtnClick: any;
+  isLoading:boolean
 }
 
 const Form: React.FC<Props> = ({
@@ -28,6 +29,7 @@ const Form: React.FC<Props> = ({
   inputFields,
   height,
   heading,
+  isLoading
 }) => {
   return (
     <JumboContainer height={height} bg="transparent" flexDirection="column">
@@ -36,6 +38,7 @@ const Form: React.FC<Props> = ({
       <CustomButton
         type="primary"
         padding="12px 30px"
+        isLoading={isLoading}
         handeOnClick={onSubmitBtnClick}
         label={btnText}
       />
