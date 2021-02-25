@@ -1,22 +1,27 @@
 import React from "react";
 
-import './styles.css'
+import "./styles.css";
 
 interface Props {
   label?: string | null;
   value: string | undefined;
-  handleOnChange:any
+  handleOnChange: any;
+  type?: string;
 }
 
-
-
-const Input: React.FC<Props> = ({ label,value,handleOnChange }) => {
-  
-  
-
+const Input: React.FC<Props> = ({
+  label,
+  value,
+  handleOnChange,
+  type = "text",
+}) => {
   return (
     <span className={`input-container ${!!value && "input-was-active"}`}>
-      <input value={value} onChange={(e)=>handleOnChange(e.target?.value)}/>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => handleOnChange(e.target?.value)}
+      />
       {label && <label>{label}</label>}
     </span>
   );
