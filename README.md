@@ -11,7 +11,8 @@
 - [x] NavBar 
 - [x] Login page 
 - [x] Signup page
-- [ ] Api response action
+- [x] Api response action
+- [x] Logout
 - [ ] Error show
 - [ ] Loading show
 - [ ] Dummy Protected route
